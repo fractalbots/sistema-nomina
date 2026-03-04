@@ -1,0 +1,15 @@
+﻿@model SistemaNomina.Models.Salary
+@{
+    ViewData["Title"] = "Eliminar Salario";
+}
+
+<div class="container mt-4">
+    <h2>¿Eliminar este salario?</h2>
+    <p><strong>Empleado:</strong> @Model.Employee?.first_name @Model.Employee?.last_name</p>
+    <p><strong>Salario:</strong> $@Model.salary.ToString("N0")</p>
+    <p><strong>Período:</strong> @Model.from_date - @(Model.to_date ?? "Activo")</p>
+    <form method="post">
+        <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+        <a href="/Salaries" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

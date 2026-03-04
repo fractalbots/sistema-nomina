@@ -1,0 +1,32 @@
+﻿@model IEnumerable<SistemaNomina.Models.LogAuditoriaSalarios>
+@{
+    ViewData["Title"] = "Cambios Salariales";
+}
+
+<div class="container mt-4">
+    <h2>Cambios Salariales</h2>
+    <form method="get" class="d-flex gap-2 mb-3">
+        <input type="date" name="desde" value="@ViewBag.Desde" class="form-control" />
+        <input type="date" name="hasta" value="@ViewBag.Hasta" class="form-control" />
+        <button class="btn btn-secondary">Filtrar</button>
+        <a href="/Reportes/ExportarCambiosPDF?desde=@ViewBag.Desde&hasta=@ViewBag.Hasta" class="btn btn-danger">Exportar PDF</a>
+    </form>
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr><th>Usuario</th><th>Fecha</th><th>Detalle</th><th>Salario</th><th>Emp No</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var l in Model)
+            {
+                <tr>
+                    <td>@l.usuario</td>
+                    <td>@l.fechaActualizacion.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@l.DetalleCambio</td>
+                    <td>$@l.salario.ToString("N0")</td>
+                    <td>@l.emp_no</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a href="/Reportes" class="btn btn-secondary">← Volver</a>
+</div>

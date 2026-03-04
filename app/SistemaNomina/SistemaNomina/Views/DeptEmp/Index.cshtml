@@ -1,0 +1,35 @@
+﻿@model IEnumerable<SistemaNomina.Models.DeptEmp>
+@{
+    ViewData["Title"] = "Asignaciones a Departamentos";
+}
+
+<div class="container mt-4">
+    <h2>Asignaciones Empleado-Departamento</h2>
+    <div class="d-flex justify-content-between mb-3">
+        <form method="get" class="d-flex gap-2">
+            <input type="text" name="search" value="@ViewBag.Search" class="form-control" placeholder="Buscar..." />
+            <button class="btn btn-secondary">Buscar</button>
+        </form>
+        <a href="/DeptEmp/Create" class="btn btn-primary">+ Nueva Asignación</a>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr><th>Empleado</th><th>Departamento</th><th>Desde</th><th>Hasta</th><th>Acciones</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var d in Model)
+            {
+                <tr>
+                    <td>@d.Employee?.first_name @d.Employee?.last_name</td>
+                    <td>@d.Department?.dept_name</td>
+                    <td>@d.from_date</td>
+                    <td>@(d.to_date ?? "Activo")</td>
+                    <td>
+                        <a href="/DeptEmp/Edit/@d.Id" class="btn btn-sm btn-warning">Editar</a>
+                        <a href="/DeptEmp/Delete/@d.Id" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

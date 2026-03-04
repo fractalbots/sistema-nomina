@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Reportes";
+}
+
+<div class="container mt-4">
+    <h2>Reportes</h2>
+    <div class="row mt-3">
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5>Nómina Vigente</h5>
+                    <p>Exporta todos los salarios activos en PDF.</p>
+                    <a href="/Reportes/NominaVigente" class="btn btn-danger">Exportar PDF</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5>Cambios Salariales</h5>
+                    <p>Consulta cambios salariales por rango de fechas.</p>
+                    <a href="/Reportes/CambiosSalariales" class="btn btn-primary">Ver Reporte</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

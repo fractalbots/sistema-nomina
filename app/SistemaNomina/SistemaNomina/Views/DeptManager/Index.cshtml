@@ -1,0 +1,29 @@
+﻿@model IEnumerable<SistemaNomina.Models.DeptManager>
+@{
+    ViewData["Title"] = "Gerentes de Departamento";
+}
+
+<div class="container mt-4">
+    <h2>Gerentes de Departamento</h2>
+    <a href="/DeptManager/Create" class="btn btn-primary mb-3">+ Nuevo Gerente</a>
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr><th>Empleado</th><th>Departamento</th><th>Desde</th><th>Hasta</th><th>Acciones</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var d in Model)
+            {
+                <tr>
+                    <td>@d.Employee?.first_name @d.Employee?.last_name</td>
+                    <td>@d.Department?.dept_name</td>
+                    <td>@d.from_date</td>
+                    <td>@(d.to_date ?? "Activo")</td>
+                    <td>
+                        <a href="/DeptManager/Edit/@d.Id" class="btn btn-sm btn-warning">Editar</a>
+                        <a href="/DeptManager/Delete/@d.Id" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

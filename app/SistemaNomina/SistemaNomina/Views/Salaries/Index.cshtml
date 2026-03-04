@@ -1,0 +1,38 @@
+﻿@model IEnumerable<SistemaNomina.Models.Salary>
+@{
+    ViewData["Title"] = "Salarios";
+}
+
+<div class="container mt-4">
+    <h2>Salarios</h2>
+    <div class="d-flex justify-content-between mb-3">
+        <form method="get" class="d-flex gap-2">
+            <input type="text" name="search" value="@ViewBag.Search" class="form-control" placeholder="Buscar empleado..." />
+            <button class="btn btn-secondary">Buscar</button>
+        </form>
+        <div>
+            <a href="/Salaries/Create" class="btn btn-primary">+ Nuevo Salario</a>
+            <a href="/Salaries/Auditoria" class="btn btn-info text-white">Ver Auditoría</a>
+        </div>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr><th>Empleado</th><th>Salario</th><th>Desde</th><th>Hasta</th><th>Acciones</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var s in Model)
+            {
+                <tr>
+                    <td>@s.Employee?.first_name @s.Employee?.last_name</td>
+                    <td>$@s.salary.ToString("N0")</td>
+                    <td>@s.from_date</td>
+                    <td>@(s.to_date ?? "Activo")</td>
+                    <td>
+                        <a href="/Salaries/Edit/@s.Id" class="btn btn-sm btn-warning">Editar</a>
+                        <a href="/Salaries/Delete/@s.Id" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

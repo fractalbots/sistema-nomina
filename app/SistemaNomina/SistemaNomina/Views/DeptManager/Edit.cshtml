@@ -1,0 +1,39 @@
+﻿@model SistemaNomina.Models.DeptManager
+@{
+    ViewData["Title"] = "Editar Gerente";
+}
+
+<div class="container mt-4">
+    <h2>Editar Gerente</h2>
+    <form method="post">
+        <input asp-for="Id" type="hidden" />
+        <div class="mb-3">
+            <label>Empleado</label>
+            <select asp-for="emp_no" class="form-control">
+                @foreach (var e in ViewBag.Employees as List<SistemaNomina.Models.Employee>)
+                {
+                    <option value="@e.emp_no">@e.first_name @e.last_name</option>
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label>Departamento</label>
+            <select asp-for="dept_no" class="form-control">
+                @foreach (var d in ViewBag.Departments as List<SistemaNomina.Models.Department>)
+                {
+                    <option value="@d.dept_no">@d.dept_name</option>
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label>Desde</label>
+            <input asp-for="from_date" type="date" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label>Hasta</label>
+            <input asp-for="to_date" type="date" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-warning">Actualizar</button>
+        <a href="/DeptManager" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

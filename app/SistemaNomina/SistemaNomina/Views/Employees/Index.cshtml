@@ -1,0 +1,44 @@
+﻿@model IEnumerable<SistemaNomina.Models.Employee>
+@{
+    ViewData["Title"] = "Empleados";
+}
+
+<div class="container mt-4">
+    <h2>Empleados</h2>
+    <div class="d-flex justify-content-between mb-3">
+        <form method="get" class="d-flex gap-2">
+            <input type="text" name="search" value="@ViewBag.Search" class="form-control" placeholder="Buscar..." />
+            <button class="btn btn-secondary">Buscar</button>
+        </form>
+        <a href="/Employees/Create" class="btn btn-primary">+ Nuevo Empleado</a>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Emp No</th>
+                <th>CI</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Género</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var e in Model)
+            {
+                <tr>
+                    <td>@e.emp_no</td>
+                    <td>@e.ci</td>
+                    <td>@e.first_name @e.last_name</td>
+                    <td>@e.correo</td>
+                    <td>@e.gender</td>
+                    <td>
+                        <a href="/Employees/Details/@e.emp_no" class="btn btn-sm btn-info">Ver</a>
+                        <a href="/Employees/Edit/@e.emp_no" class="btn btn-sm btn-warning">Editar</a>
+                        <a href="/Employees/Delete/@e.emp_no" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

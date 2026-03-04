@@ -1,0 +1,34 @@
+﻿@model SistemaNomina.Models.Salary
+@{
+    ViewData["Title"] = "Nuevo Salario";
+}
+
+<div class="container mt-4">
+    <h2>Nuevo Salario</h2>
+    <form method="post">
+        <div class="mb-3">
+            <label>Empleado</label>
+            <select asp-for="emp_no" class="form-control">
+                @foreach (var e in ViewBag.Employees as List<SistemaNomina.Models.Employee>)
+                {
+                    <option value="@e.emp_no">@e.first_name @e.last_name</option>
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label>Salario</label>
+            <input asp-for="salary" type="number" class="form-control" />
+            <span asp-validation-for="salary" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label>Desde</label>
+            <input asp-for="from_date" type="date" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label>Hasta (dejar vacío si está activo)</label>
+            <input asp-for="to_date" type="date" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a href="/Salaries" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
