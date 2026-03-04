@@ -1,0 +1,19 @@
+﻿@model SistemaNomina.Models.Employee
+@{
+    ViewData["Title"] = "Detalle Empleado";
+}
+
+<div class="container mt-4">
+    <h2>Detalle del Empleado</h2>
+    <table class="table table-bordered">
+        <tr><th>Emp No</th><td>@Model.emp_no</td></tr>
+        <tr><th>CI</th><td>@Model.ci</td></tr>
+        <tr><th>Nombre</th><td>@Model.first_name @Model.last_name</td></tr>
+        <tr><th>Correo</th><td>@Model.correo</td></tr>
+        <tr><th>Género</th><td>@Model.gender</td></tr>
+        <tr><th>Fecha Nacimiento</th><td>@Model.birth_date.ToShortDateString()</td></tr>
+        <tr><th>Fecha Contratación</th><td>@Model.hire_date.ToShortDateString()</td></tr>
+    </table>
+    <a href="/Employees/Edit/@Model.emp_no" class="btn btn-warning">Editar</a>
+    <a href="/Employees" class="btn btn-secondary">Volver</a>
+</div>

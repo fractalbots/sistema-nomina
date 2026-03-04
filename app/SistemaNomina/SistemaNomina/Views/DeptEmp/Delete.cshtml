@@ -1,0 +1,15 @@
+﻿@model SistemaNomina.Models.DeptEmp
+@{
+    ViewData["Title"] = "Eliminar Asignación";
+}
+
+<div class="container mt-4">
+    <h2>¿Eliminar esta asignación?</h2>
+    <p><strong>Empleado:</strong> @Model.Employee?.first_name @Model.Employee?.last_name</p>
+    <p><strong>Departamento:</strong> @Model.Department?.dept_name</p>
+    <p><strong>Período:</strong> @Model.from_date - @(Model.to_date ?? "Activo")</p>
+    <form method="post">
+        <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+        <a href="/DeptEmp" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

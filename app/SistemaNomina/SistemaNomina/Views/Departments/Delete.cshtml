@@ -1,0 +1,13 @@
+﻿@model SistemaNomina.Models.Department
+@{
+    ViewData["Title"] = "Eliminar Departamento";
+}
+
+<div class="container mt-4">
+    <h2>¿Eliminar este departamento?</h2>
+    <p><strong>@Model.dept_no</strong> - @Model.dept_name</p>
+    <form method="post">
+        <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+        <a href="/Departments" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

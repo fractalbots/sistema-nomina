@@ -1,0 +1,26 @@
+﻿@model IEnumerable<SistemaNomina.Models.LogAuditoriaSalarios>
+@{
+    ViewData["Title"] = "Auditoría de Salarios";
+}
+
+<div class="container mt-4">
+    <h2>Auditoría de Salarios</h2>
+    <a href="/Salaries" class="btn btn-secondary mb-3">← Volver</a>
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr><th>Usuario</th><th>Fecha</th><th>Detalle</th><th>Salario</th><th>Emp No</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var log in Model)
+            {
+                <tr>
+                    <td>@log.usuario</td>
+                    <td>@log.fechaActualizacion.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@log.DetalleCambio</td>
+                    <td>$@log.salario.ToString("N0")</td>
+                    <td>@log.emp_no</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

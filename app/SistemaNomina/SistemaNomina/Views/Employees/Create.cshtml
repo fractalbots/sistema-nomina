@@ -1,0 +1,49 @@
+﻿@model SistemaNomina.Models.Employee
+@{
+    ViewData["Title"] = "Nuevo Empleado";
+}
+
+<div class="container mt-4">
+    <h2>Nuevo Empleado</h2>
+    <form method="post">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label>CI</label>
+                <input asp-for="ci" class="form-control" />
+                <span asp-validation-for="ci" class="text-danger"></span>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Nombre</label>
+                <input asp-for="first_name" class="form-control" />
+                <span asp-validation-for="first_name" class="text-danger"></span>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Apellido</label>
+                <input asp-for="last_name" class="form-control" />
+                <span asp-validation-for="last_name" class="text-danger"></span>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Correo</label>
+                <input asp-for="correo" class="form-control" />
+                <span asp-validation-for="correo" class="text-danger"></span>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Fecha Nacimiento</label>
+                <input asp-for="birth_date" type="date" class="form-control" />
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Fecha Contratación</label>
+                <input asp-for="hire_date" type="date" class="form-control" />
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Género</label>
+                <select asp-for="gender" class="form-control">
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a href="/Employees" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
